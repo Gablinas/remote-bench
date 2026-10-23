@@ -1,6 +1,6 @@
 #!/bin/sh
 # Small fixed-work benchmark. Prints one JSON line. No network, no secrets.
-now() { date +%s.%N; }
+now() { cut -d" " -f1 /proc/uptime; }
 elapsed() { awk -v a="$1" -v b="$2" 'BEGIN{printf "%.2f", b-a}'; }
 cores=$(nproc 2>/dev/null || echo 1)
 mem_mb=$(awk '/MemTotal/{printf "%d",$2/1024}' /proc/meminfo 2>/dev/null || echo 0)
