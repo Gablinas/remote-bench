@@ -1,0 +1,9 @@
+name: bench-ubicloud
+on: workflow_dispatch
+jobs:
+  bench:
+    runs-on: ubicloud-standard-2
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: BENCH_PROVIDER=ubicloud sh bench.sh | tee result.json
